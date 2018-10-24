@@ -21,13 +21,6 @@ fi
 # Append default ICE config
 cat /mumble-server_ice.ini >> /etc/mumble-server.ini
 
-# Append ICE configs from environment variables
-configs=${!ICE_*}
-for var in $configs; do
-    config_name=${var#*_}
-    echo "${config_name}=${!var}" >> /etc/mumble-server.ini
-done
-
 # Start cron
 echo "Starting Cron"
 cron
