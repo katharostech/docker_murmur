@@ -30,7 +30,9 @@ volumes:
 
 ## Configuring Mumble
 
-All mumble settings can easily be set through environment variables. All that is necessary is to prepend `MUMBLE_` to the name of a mumble setting and set that environment variable. For example:
+All mumble settings can easily be set through environment variables. All that is necessary is to prepend `MUMBLE_` to the name of a mumble setting and set that environment variable.
+
+You can set the SuperUser password with the `SUPERUSER_PASSWORD` environment variable. If you do not set the SuperUser password, it will be set to a random password that you can find in the container logs.
 
 ```yaml
 version: '3'
@@ -40,6 +42,7 @@ services:
     ports:
      - 64738:64738
     environment:
+      SUPERUSER_PASSWORD: supersecretpassword
       # Disable Bonjour
       MUMBLE_bonjour: "False"
       # Set welcome text

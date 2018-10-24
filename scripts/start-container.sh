@@ -21,6 +21,11 @@ fi
 # Append default ICE config
 cat /mumble-server_ice.ini >> /etc/mumble-server.ini
 
+# Set SuperUser password
+if [ -n "SUPERUSER_PASSWORD" ]; then
+    murmurd -supw $SUPERUSER_PASSWORD
+fi
+
 # Start cron
 echo "Starting Cron"
 cron
